@@ -4,7 +4,6 @@ import Button from '@/Components/Button';
 import Guest from '@/Layouts/Guest';
 import Input from '@/Components/Input';
 import Label from '@/Components/Label';
-import ValidationErrors from '@/Components/ValidationErrors';
 import {Head, Link, useForm} from '@inertiajs/inertia-react';
 
 export default function Login({status, canResetPassword}) {
@@ -40,7 +39,6 @@ export default function Login({status, canResetPassword}) {
                 </div>
             )}
 
-            <ValidationErrors errors={errors} />
             <form onSubmit={submit}>
                 <div className="px-5 py-7">                    
                         <Label
@@ -57,6 +55,7 @@ export default function Login({status, canResetPassword}) {
                             isFocused={true}
                             handleChange={onHandleChange}
                         />
+                        <div className="mb-3 text-normal text-red-500 ">{errors.email}</div>
                        
                         <Label
                             className="font-bold text-sm text-gray-600 pb-1 block"
@@ -71,6 +70,8 @@ export default function Login({status, canResetPassword}) {
                             autoComplete="current-password"
                             handleChange={onHandleChange}
                         />
+                        <div className="mb-3 text-normal text-red-500 ">{errors.password}</div>
+
                         <Button processing={processing} className="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
                             <span className="inline-block mr-2 font-bold">Login</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block">
